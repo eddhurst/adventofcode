@@ -101,5 +101,10 @@ console.info(parsed);
 const pOne = partOne(parsed);
 
 console.info('====================')
+
 console.info(pOne);
-console.info(pOne.sort());
+
+console.info(pOne.sort((a,b) => {
+  if (a === b) return 0;
+  return a < b ? -1 : 1
+}));
