@@ -64,6 +64,8 @@ const process = (seed, data) => {
     'humidity-to-location',
   ];
 
+  console.info('--------')
+
   return keys.reduce((location, key) => {
     // console.info('----------')
     const previousLocation = location;
@@ -71,10 +73,11 @@ const process = (seed, data) => {
     let range;
     const availableRanges = Object.keys(data[key]);
 
+    console.info(availableRanges);
+
     // OCCURS INSIDE RANGE
     for (let i = 0; i < availableRanges.length; i += 1) {
       const index = availableRanges[i];
-
       if (previousLocation >= parseInt(index)) {
         if (previousLocation < parseInt(index) + data[key][index].range) {
           range = data[key][index];
@@ -103,7 +106,7 @@ const partOne = (data) => {
 
 import fs from 'fs';
 
-const input = fs.readFileSync('./input.txt', 'utf8');
+const input = fs.readFileSync('./test.txt', 'utf8');
 const data = input.split(/\n/);
 
 const parsed = parseData(data);
